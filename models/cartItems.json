@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name": "Couronne de fleurs",
+        "prix": "2500",
+        "vendeur": "Toto",
+        "img": "/images/fleur.jpg",
+        "quantity": 1,
+        "subtotal": 2500
+    },
+    {
+        "id": 2,
+        "name": "Lot de poisson",
+        "prix": "1000",
+        "vendeur": "Tata",
+        "img": "/images/poisson.jpg",
+        "quantity": 2,
+        "subtotal": 2000
+    }
+]

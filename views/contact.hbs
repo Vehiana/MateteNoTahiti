@@ -1,0 +1,14 @@
+<h1>Nos contacts</h1>
+<div class="container">
+    {{#each users}}
+    <div class="contact-card2">
+        <div class="contact-details">
+            <p><strong>Nom :</strong>{{name}}</p>
+            <p><strong>Fonction :</strong> ... </p>
+            <p><strong>Tel :</strong> ... </p>
+            <p><strong>Mail :</strong>{{email}}</p>
+        </div>
+    </div>
+    {{/each}}
+<br>
+{{> contactUs}}

@@ -1,0 +1,77 @@
+[
+    {
+        "id": 1,
+        "vendeur": {
+            "prenom": "Teva",
+            "nom": "Tahiti"
+        },
+        "produits_vendus": ["Fruits tropicaux bio", "Légumes bio locaux", "Produits artisanaux"],
+        "lieu_de_vente": "Papeete, Tahiti",
+        "horaires": {
+            "mardi": "08:00 - 12:00",
+            "vendredi": "07:00 - 11:00"
+        },
+        "tel": "+689 40 12 34 56",
+        "photo": "https://via.placeholder.com/100"
+    },
+    {
+        "id": 2,
+        "vendeur": {
+            "prenom": "Maeva",
+            "nom": "Tahiti"
+        },
+        "produits_vendus": ["Viande locale", "Charcuterie artisanale", "Poulet fermier"],
+        "lieu_de_vente": "Mahina, Tahiti",
+        "horaires": {
+            "lundi": "09:00 - 13:00",
+            "jeudi": "08:00 - 12:00"
+        },
+        "tel": "+689 40 23 45 67",
+        "photo": "https://via.placeholder.com/100"
+    },
+    {
+        "id": 3,
+        "vendeur": {
+            "prenom": "Hina",
+            "nom": "Tahiti"
+        },
+        "produits_vendus": ["Fromages locaux", "Yaourts frais"],
+        "lieu_de_vente": "Taravao, Tahiti",
+        "horaires": {
+            "mercredi": "10:00 - 14:00",
+            "samedi": "09:00 - 13:00"
+        },
+        "tel": "+689 40 34 56 78",
+        "photo": "https://via.placeholder.com/100"
+    },
+    {
+        "id": 4,
+        "vendeur": {
+            "prenom": "Tepa",
+            "nom": "Tahiti"
+        },
+        "produits_vendus": ["Pâtisseries locales", "Viennoiseries", "Gâteaux traditionnels"],
+        "lieu_de_vente": "Punaauia, Tahiti",
+        "horaires": {
+            "jeudi": "07:00 - 11:00",
+            "dimanche": "08:00 - 12:00"
+        },
+        "tel": "+689 40 45 67 89",
+        "photo": "https://via.placeholder.com/100"
+    },
+    {
+        "id": 5,
+        "vendeur": {
+            "prenom": "Tevai",
+            "nom": "Tahiti"
+        },
+        "produits_vendus": ["Poissons frais du lagon", "Fruits de mer locaux"],
+        "lieu_de_vente": "Faaa, Tahiti",
+        "horaires": {
+            "mardi": "06:00 - 10:00",
+            "samedi": "07:00 - 11:00"
+        },
+        "tel": "+689 40 56 78 90",
+        "photo": "https://via.placeholder.com/100"
+    }
+  ]  

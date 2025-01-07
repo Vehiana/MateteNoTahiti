@@ -1,0 +1,22 @@
+<h1>Nos vendeurs</h1>
+
+<div class="contact-cards">
+    {{#each sellers}}
+    <div class="contact-card">
+        <div class="contact-photo">
+            <img src="{{photo}}" alt="Photo de {{nom}}">
+        </div>
+        <div class="contact-info">
+            <h3>{{vendeur.prenom}}</h3>
+            <p><strong>Téléphone:</strong> {{tel}}</p>
+            <p><strong>Lieu:</strong> {{lieu_de_vente}}</p>
+            <p><strong>Horaires:</strong></p>
+            <ul>
+                {{#each horaires}}
+                <li>{{@key}}: {{this}}</li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    {{/each}}
+</div>

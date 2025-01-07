@@ -1,0 +1,17 @@
+<h1>NOS PRODUITS</h1>
+
+<div class="container">
+    {{#each products}}
+        <div class="card-product">
+            <div class="image-container">
+                <img src="{{img}}" alt="{{name}}">
+            </div>
+            <h3>{{name}}</h3>
+            <p><strong>Prix :</strong> {{prix}} F</p>
+            <p><strong>Vendeur :</strong> {{vendeur}}</p>
+            <div class="button-container">
+                <button class="see-more">Voir plus</button>
+            </div>
+        </div>
+    {{/each}}
+    </div>

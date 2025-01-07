@@ -1,0 +1,50 @@
+<div class="text-container">
+<p>Texte</p>
+</div>
+
+<h2><u>Nos nouveaux produits</u></h2>
+<div class="container">
+    {{#each products}}
+        <div class="card-product">
+            <div class="image-container">
+                <img src="{{img}}" alt="{{name}}">
+            </div>
+            <h3>{{name}}</h3>
+            <p><strong>Prix :</strong> {{prix}} F</p>
+            <p><strong>Vendeur :</strong> {{vendeur}}</p>
+            <div class="button-container">
+                <button class="see-more">Voir plus</button>
+            </div>
+        </div>
+    {{/each}}
+    </div>
+
+    <h1><u>Nos nouveaux vendeurs</u></h1>
+    <div class="contact-cards">
+    {{#each sellers}}
+    <div class="contact-card">
+        <div class="contact-photo">
+            <img src="{{photo}}" alt="Photo de {{nom}}">
+        </div>
+        <div class="contact-info">
+            <h3>{{vendeur.prenom}}</h3>
+            <p><strong>Téléphone:</strong> {{tel}}</p>
+            <p><strong>Lieu:</strong> {{lieu_de_vente}}</p>
+            <p><strong>Horaires:</strong></p>
+            <ul>
+                {{#each horaires}}
+                <li>{{@key}}: {{this}}</li>
+                {{/each}}
+            </ul>
+            <a href="/sellers/{{id}}" class="view-profile-btn">+</a>
+        </div>
+    </div>
+    {{/each}}
+</div>
+<br>
+<hr>
+<br>
+<div class="container">
+    {{>contactUs}}
+</div>
+</div>

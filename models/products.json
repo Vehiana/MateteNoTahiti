@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "name": "Couronne de fleurs",
+        "prix": "2500",
+        "vendeur": "Toto",
+        "img": "/images/fleur.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Lot de poisson",
+        "prix": "1000",
+        "vendeur": "Tata",
+        "img": "/images/poisson.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Poulet",
+        "prix": "1400",
+        "vendeur": "Tutu",
+        "img": "/images/poulet.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Lot de mangues",
+        "prix": "500",
+        "vendeur": "Titi",
+        "img": "/images/mangues.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Firi firi",
+        "prix": "500",
+        "vendeur": "Jojo",
+        "img": "/images/firifiri.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Pua'a rôti",
+        "prix": "1000",
+        "vendeur": "Juju",
+        "img": "/images/puaroti.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Mape",
+        "prix": "350",
+        "vendeur": "Jiji",
+        "img": "/images/mape.jpg"
+    }
+]
+  
