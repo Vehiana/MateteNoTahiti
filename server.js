@@ -1,6 +1,6 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
-const hbs = require('handlebars')
+const hbs = require('handlebars');
 const passport = require('passport');
 const session = require('express-session');
 const authRoutes = require('./routes/auth');
@@ -11,6 +11,7 @@ const productsRoute = require('./routes/products');
 const contactRoute = require('./routes/contact');
 const sellersRoute = require('./routes/sellers');
 const cartRoute = require('./routes/cart');
+const usersRoutes = require('./routes/users');
 
 const app = express();
 const port = 3002;
@@ -41,5 +42,6 @@ app.use('/', productsRoute);
 app.use('/', contactRoute);
 app.use('/', sellersRoute);
 app.use('/', cartRoute);
+app.use('/users', usersRoutes);
 
 app.listen(port, () => console.log(`App listening to port ${port}`));
