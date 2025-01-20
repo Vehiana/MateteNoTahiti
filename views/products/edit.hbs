@@ -1,0 +1,20 @@
+<h2>Edit product {{ product.name }}</h2>
+<div class="container">
+    <div class="card">
+        <form method="post" action="/products/edit">
+        <input type="hidden" name="id" value="{{ product._id }}">
+        <div>
+            <label for="name">Name</label>
+            <input id="name" type="text" name="name" value="{{ product.name }}">
+        </div>
+        <div>
+            <label for="price">Price</label>
+            <input id="price" type="price" name="price" value="{{ product.price }}">
+        </div>
+        <div>
+            <a href="/products"><button type="button">Cancel</button></a>
+            <button type="submit">Update</button>
+        </div>
+        </form>
+    </div>
+</div>

@@ -38,7 +38,7 @@ app.use(passport.session());
 app.use('/', authRoutes);
 app.use('/', dashboardRoutes);
 app.use('/', homeRoute);
-app.use('/', productsRoute);
+app.use('/products', productsRoute);
 app.use('/', contactRoute);
 app.use('/', sellersRoute);
 app.use('/', cartRoute);
