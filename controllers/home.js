@@ -1,8 +1,15 @@
-const sellers = require('../models/sellers.json')
-const products = require('../models/products.json');
+const Product = require('../models/Product');
 
-module.exports = {
-  homeView: (req, res) => {
-    res.render('home', { products: products, sellers: sellers });
+exports.getHomePage = async (req, res) => {
+  try {
+    const products = await Product.getProducts();
+    
+    // Sélectionner les 6 derniers produits ajoutés
+    const latestProducts = products.slice(-5).reverse();
+
+    res.render('home', { products: latestProducts });
+  } catch (error) {
+    console.error('Erreur lors de la récupération des produits:', error);
+    res.status(500).send('Erreur serveur');
   }
-}
+};

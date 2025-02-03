@@ -4,6 +4,6 @@ const { protectRoute } = require('../auth');
 
 const router = express.Router();
 
-router.get('/home', protectRoute, homeController.homeView);
+router.get('/home', protectRoute, homeController.getHomePage);
 
 module.exports = router;

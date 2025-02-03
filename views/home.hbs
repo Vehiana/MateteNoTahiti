@@ -1,50 +1,22 @@
 <div class="text-container">
-<p>Texte</p>
+    <p><b>MAEVA! WELCOME! BIENVENUE!</b><br> Sur cette plateforme vous pourrez consulter ou commander des produits
+        vendus sur les bords de route de notre belle île, Tahiti.</p>
 </div>
 
-<h2><u>Nos nouveaux produits</u></h2>
-<div class="container">
-    {{#each products}}
-        <div class="card-product">
-            <div class="image-container">
-                <img src="{{img}}" alt="{{name}}">
+<h1><u>Nos derniers produits</u></h1>
+    <div class="container">
+        {{#each products}}
+            <div class="card-product">
+                <div class="image-container">
+                    <img src="/images/{{this.photo}}" alt="{{this.name_product}}">
+                </div>
+                <strong>{{this.name_product}}</strong>
+                <p>{{this.description}}</p>
+                <p>Prix: {{this.price}} XPF</p>
+                <a href="/product/{{this.id}}"><button>Voir le produit</button></a>
             </div>
-            <h3>{{name}}</h3>
-            <p><strong>Prix :</strong> {{prix}} F</p>
-            <p><strong>Vendeur :</strong> {{vendeur}}</p>
-            <div class="button-container">
-                <button class="see-more">Voir plus</button>
-            </div>
-        </div>
-    {{/each}}
+        {{/each}}
     </div>
+<br>
 
-    <h1><u>Nos nouveaux vendeurs</u></h1>
-    <div class="contact-cards">
-    {{#each sellers}}
-    <div class="contact-card">
-        <div class="contact-photo">
-            <img src="{{photo}}" alt="Photo de {{nom}}">
-        </div>
-        <div class="contact-info">
-            <h3>{{vendeur.prenom}}</h3>
-            <p><strong>Téléphone:</strong> {{tel}}</p>
-            <p><strong>Lieu:</strong> {{lieu_de_vente}}</p>
-            <p><strong>Horaires:</strong></p>
-            <ul>
-                {{#each horaires}}
-                <li>{{@key}}: {{this}}</li>
-                {{/each}}
-            </ul>
-            <a href="/sellers/{{id}}" class="view-profile-btn">+</a>
-        </div>
-    </div>
-    {{/each}}
-</div>
-<br>
-<hr>
-<br>
-<div class="container">
-    {{>contactUs}}
-</div>
 </div>
