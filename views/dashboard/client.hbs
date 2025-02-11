@@ -1,0 +1,61 @@
+<div class="dashboard client-dashboard">
+    <h1 class="dashboard-title">{{title}}</h1>
+
+    <div class="dashboard-sections">
+        <div class="section">
+            <h2>Produits recommandés</h2>
+            <div class="products-grid">
+                {{#each featuredProducts}}
+                    <div class="product-card">
+                        <div class="product-image">
+                            {{#if image}}
+                                <img src="{{image}}" alt="{{name}}">
+                            {{else}}
+                                <img src="/images/default-product.png" alt="Image par défaut">
+                            {{/if}}
+                        </div>
+                        <div class="product-info">
+                            <h3>{{name}}</h3>
+                            <p class="price">{{price}} XPF</p>
+                            <p class="description">{{description}}</p>
+                        </div>
+                        <div class="product-actions">
+                            <a href="/products/{{_id}}" class="button is-primary">
+                                <span class="icon">
+                                    <i class="fas fa-eye"></i>
+                                </span>
+                                <span>Voir détails</span>
+                            </a>
+                        </div>
+                    </div>
+                {{else}}
+                    <p class="no-products">Aucun produit recommandé pour le moment</p>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Vendeurs populaires</h2>
+            <div class="sellers-grid">
+                {{#each popularSellers}}
+                    <div class="seller-card">
+                        <div class="seller-info">
+                            <h3>{{name}}</h3>
+                            <p>{{productsCount}} produits</p>
+                        </div>
+                        <div class="seller-actions">
+                            <a href="/sellers/{{_id}}" class="button is-primary">
+                                <span class="icon">
+                                    <i class="fas fa-store"></i>
+                                </span>
+                                <span>Voir la boutique</span>
+                            </a>
+                        </div>
+                    </div>
+                {{else}}
+                    <p class="no-sellers">Aucun vendeur populaire pour le moment</p>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

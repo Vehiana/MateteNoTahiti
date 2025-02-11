@@ -1,4 +1,77 @@
-<h2>Tableau de bord</h2>
-<p>
-  <a href="/home">Accéder à l'accueil</a>
-</p>
+<div class="dashboard">
+    <div class="dashboard-header">
+        <h1>Tableau de bord</h1>
+        <div class="user-info">
+            <span>Bienvenue, {{user.name}}</span>
+        </div>
+    </div>
+
+    <div class="dashboard-content">
+        <div class="dashboard-nav">
+            <a href="/" class="nav-item">
+                <i class="fas fa-home"></i>
+                Accueil
+            </a>
+            <a href="/products" class="nav-item">
+                <i class="fas fa-box"></i>
+                Mes produits
+            </a>
+            <a href="/products/create" class="nav-item">
+                <i class="fas fa-plus"></i>
+                Ajouter un produit
+            </a>
+            <a href="/profile" class="nav-item">
+                <i class="fas fa-user"></i>
+                Mon profil
+            </a>
+        </div>
+
+        <div class="dashboard-main">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Produits</h3>
+                        <p class="stat-number">{{productsCount}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recent-products">
+                <h2>Produits récents</h2>
+                {{#if products.length}}
+                <div class="products-grid">
+                    {{#each products}}
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="{{this.image}}" alt="{{this.name}}">
+                        </div>
+                        <div class="product-info">
+                            <h3>{{this.name}}</h3>
+                            <p>{{this.price}} XPF</p>
+                            <div class="product-actions">
+                                <a href="/products/edit/{{this._id}}" class="btn-edit">
+                                    <i class="fas fa-edit"></i> Modifier
+                                </a>
+                                <a href="/products/delete/{{this._id}}" class="btn-delete">
+                                    <i class="fas fa-trash"></i> Supprimer
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                {{else}}
+                <div class="no-products">
+                    <p>Vous n'avez pas encore de produits.</p>
+                    <a href="/products/create" class="btn-primary">
+                        <i class="fas fa-plus"></i> Ajouter un produit
+                    </a>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

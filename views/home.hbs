@@ -1,22 +1,88 @@
-<div class="text-container">
-    <p><b>MAEVA! WELCOME! BIENVENUE!</b><br> Sur cette plateforme vous pourrez consulter ou commander des produits
-        vendus sur les bords de route de notre belle île, Tahiti.</p>
+<div class="image-banner">
+    <img src="/images/MateteNoTahiti.png" alt="Matete No tahiti">
 </div>
 
-<h1><u>Nos derniers produits</u></h1>
+<section class="section">
     <div class="container">
-        {{#each products}}
-            <div class="card-product">
-                <div class="image-container">
-                    <img src="/images/{{this.photo}}" alt="{{this.name_product}}">
+        <div class="search-box">
+            <form method="POST" action="/" class="field has-addons has-addons-centered">
+                <div class="control has-icons-left is-expanded">
+                    <input class="input is-medium" type="text" id="search-name" placeholder="Rechercher un produit...">
+                    <span class="icon is-left">
+                        <i class="fas fa-search"></i>
+                    </span>
                 </div>
-                <strong>{{this.name_product}}</strong>
-                <p>{{this.description}}</p>
-                <p>Prix: {{this.price}} XPF</p>
-                <a href="/product/{{this.id}}"><button>Voir le produit</button></a>
-            </div>
-        {{/each}}
-    </div>
-<br>
+                <div class="control">
+                    <button class="button is-primary is-medium" onclick="searchProducts()">
+                        Rechercher
+                    </button>
+                </div>
+            </form>
+        </div>
 
-</div>
+        <div class="content has-text-centered mt-6 mb-6">
+            <h2 class="title is-3">MAEVA! WELCOME! BIENVENUE!</h2>
+            <p class="subtitle is-5">
+                Sur cette plateforme vous pourrez consulter des produits
+                vendus sur les bords de route de notre belle île, Tahiti.
+            </p>
+        </div>
+
+        <div class="featured-section">
+            <h2 class="title is-4 has-text-centered mb-5">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <span>Nos derniers produits</span>
+                </span>
+            </h2>
+
+            <div class="products-grid">
+                {{#each products}}
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/images/products/{{this.photo}}" alt="{{this.name_product}}">
+                        {{#if this.isNew}}
+                        <span class="tag is-success is-medium product-tag">
+                            Nouveau
+                        </span>
+                        {{/if}}
+                    </div>
+                    <div class="product-info">
+                        <h3 class="title is-5">{{this.name_product}}</h3>
+                        <p class="description">{{this.description}}</p>
+                        <div class="price-tag">
+                            <span class="icon">
+                                <i class="fas fa-tag"></i>
+                            </span>
+                            <span class="price">{{formatPrice this.price}}</span>
+                        </div>
+                        <div class="seller-info">
+                            <span class="icon">
+                                <i class="fas fa-store"></i>
+                            </span>
+                            <span>{{this.seller.name}}</span>
+                        </div>
+                    </div>
+                </div>
+                {{else}}
+                <div class="notification is-warning is-light">
+                    <p class="has-text-centered">Aucun produit disponible pour le moment.</p>
+                </div>
+                {{/each}}
+            </div>
+
+            {{#if products.length}}
+            <div class="has-text-centered mt-6">
+                <a href="/products" class="button is-primary is-outlined">
+                    <span class="icon">
+                        <i class="fas fa-th-list"></i>
+                    </span>
+                    <span>Voir tous les produits</span>
+                </a>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</section>

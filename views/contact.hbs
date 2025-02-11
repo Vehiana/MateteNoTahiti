@@ -1,14 +1,113 @@
-<h1>Nos contacts</h1>
-<div class="container">
-    {{#each users}}
-    <div class="contact-card2">
-        <div class="contact-details">
-            <p><strong>Nom :</strong>{{name}}</p>
-            <p><strong>Fonction :</strong> ... </p>
-            <p><strong>Tel :</strong> ... </p>
-            <p><strong>Mail :</strong>{{email}}</p>
+<div class="contact-page">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-6">
+                <div class="box contact-info">
+                    <h1 class="title">Contactez-nous</h1>
+                    <p class="subtitle">Nous sommes là pour vous aider</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </span>
+                            <div>
+                                <h3>Adresse</h3>
+                                <p>BP 40347 - 98713 Papeete</p>
+                                <p>TAHITI - Polynésie française</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="icon">
+                                <i class="fas fa-phone"></i>
+                            </span>
+                            <div>
+                                <h3>Téléphone</h3>
+                                <p>+689 87 123 456</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="icon">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <div>
+                                <h3>Email</h3>
+                                <p>contact@matetenopf.com</p>
+                            </div>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="#" class="icon is-large">
+                                <i class="fab fa-facebook fa-2x"></i>
+                            </a>
+                            <a href="#" class="icon is-large">
+                                <i class="fab fa-instagram fa-2x"></i>
+                            </a>
+                            <a href="#" class="icon is-large">
+                                <i class="fab fa-twitter fa-2x"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column is-6">
+                <div class="box">
+                    <h2 class="title">Envoyez-nous un message</h2>
+                    
+                    <form class="contact-form">
+                        <div class="field">
+                            <label class="label">Nom</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="text" placeholder="Votre nom" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Email</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="email" placeholder="votre@email.com" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Sujet</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="text" placeholder="Sujet de votre message" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-heading"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Message</label>
+                            <div class="control">
+                                <textarea class="textarea" placeholder="Votre message" rows="5" required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <button type="submit" class="button is-primary is-fullwidth">
+                                    <span class="icon">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </span>
+                                    <span>Envoyer le message</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    {{/each}}
-<br>
-{{> contactUs}}
+</div>

@@ -1,0 +1,72 @@
+<div class="section sellers-page">
+    <div class="container">
+        <h1 class="title has-text-centered">
+            <span class="icon-text">
+                <span class="icon">
+                    <i class="fas fa-store"></i>
+                </span>
+                <span>{{title}}</span>
+            </span>
+        </h1>
+
+        <div class="sellers-grid">
+            {{#each sellers}}
+            <div class="seller-card">
+                <div class="seller-header">
+                    <h2 class="title is-4">{{name}}</h2>
+                    <p class="subtitle is-6">
+                        <span class="icon">
+                            <i class="fas fa-clock"></i>
+                        </span>
+                        Membre depuis {{formatDate createdAt}}
+                    </p>
+                </div>
+
+                <div class="seller-stats">
+                    <div class="stat-item">
+                        <p class="stat-value">{{productsCount}}</p>
+                        <p class="stat-label">Produits</p>
+                    </div>
+                    <div class="stat-item">
+                        <p class="stat-value">{{salesCount}}</p>
+                        <p class="stat-label">Ventes</p>
+                    </div>
+                    <div class="stat-item">
+                        <p class="stat-value">{{rating}}</p>
+                        <p class="stat-label">Note</p>
+                    </div>
+                </div>
+
+                <div class="seller-content">
+                    {{#if description}}
+                    <p>{{description}}</p>
+                    {{else}}
+                    <p class="has-text-grey">Aucune description disponible</p>
+                    {{/if}}
+                </div>
+
+                <div class="seller-actions">
+                    <a href="/sellers/{{_id}}" class="button is-primary">
+                        <span class="icon">
+                            <i class="fas fa-store"></i>
+                        </span>
+                        <span>Voir la boutique</span>
+                    </a>
+                    {{#if ../user.isAdmin}}
+                    <a href="/sellers/{{_id}}/edit" class="button is-info">
+                        <span class="icon">
+                            <i class="fas fa-edit"></i>
+                        </span>
+                        <span>Modifier</span>
+                    </a>
+                    {{/if}}
+                </div>
+            </div>
+            {{else}}
+            <div class="notification is-warning is-light">
+                <p class="has-text-centered">Aucun vendeur trouvé</p>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

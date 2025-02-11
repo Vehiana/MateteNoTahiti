@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="card">
+        <form method="post" action="/auth/register">
+            <h1>Créer un compte</h1>
+            {{#if error}}
+            <div class="error-message">
+                {{error}}
+            </div>
+            {{/if}}
+            <div>
+                <label for="name">Nom complet</label>
+                <input id="name" type="text" name="name" required value="{{name}}">
+            </div>
+            <div>
+                <label for="email">E-mail</label>
+                <input id="email" type="email" name="email" required value="{{email}}">
+            </div>
+            <div>
+                <label for="role">Type de compte</label>
+                <select id="role" name="role" required>
+                    <option value="client" {{#if role_client}}selected{{/if}}>Client</option>
+                    <option value="vendeur" {{#if role_vendeur}}selected{{/if}}>Vendeur</option>
+                </select>
+            </div>
+            <div>
+                <label for="password">Mot de passe</label>
+                <input id="password" type="password" name="password" required minlength="8">
+                <small>Le mot de passe doit contenir au moins 8 caractères</small>
+            </div>
+            <div>
+                <label for="confirm_password">Confirmer le mot de passe</label>
+                <input id="confirm_password" type="password" name="confirm_password" required>
+            </div>
+            <div class="button-group">
+                <a href="/auth/login"><button type="button">Annuler</button></a>
+                <button type="submit">S'inscrire</button>
+            </div>
+            <div>
+                <p>Déjà inscrit ? <a href="/auth/login">Se connecter</a></p>
+            </div>
+        </form>
+    </div>
+</div>

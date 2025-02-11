@@ -1,0 +1,102 @@
+<div class="sellers-manage-page">
+    <div class="container">
+        <h1 class="title">{{title}}</h1>
+
+        <!-- Vendeurs en attente -->
+        <div class="section">
+            <h2 class="subtitle">Vendeurs en attente d'approbation</h2>
+            {{#if pendingSellers.length}}
+                <div class="table-container">
+                    <table class="table is-fullwidth is-striped">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Email</th>
+                                <th>Date d'inscription</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each pendingSellers}}
+                                <tr>
+                                    <td>{{name}}</td>
+                                    <td>{{email}}</td>
+                                    <td>{{formatDate createdAt}}</td>
+                                    <td class="actions">
+                                        <form action="/sellers/approve/{{_id}}" method="POST" class="is-inline">
+                                            <button type="submit" class="button is-small is-success">
+                                                <span class="icon">
+                                                    <i class="fas fa-check"></i>
+                                                </span>
+                                                <span>Approuver</span>
+                                            </button>
+                                        </form>
+                                        <form action="/sellers/reject/{{_id}}" method="POST" class="is-inline">
+                                            <button type="submit" class="button is-small is-danger">
+                                                <span class="icon">
+                                                    <i class="fas fa-times"></i>
+                                                </span>
+                                                <span>Rejeter</span>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            {{else}}
+                <p class="has-text-grey">Aucun vendeur en attente d'approbation</p>
+            {{/if}}
+        </div>
+
+        <!-- Vendeurs approuvés -->
+        <div class="section">
+            <h2 class="subtitle">Vendeurs approuvés</h2>
+            {{#if approvedSellers.length}}
+                <div class="table-container">
+                    <table class="table is-fullwidth is-striped">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Email</th>
+                                <th>Produits</th>
+                                <th>Date d'approbation</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each approvedSellers}}
+                                <tr>
+                                    <td>{{name}}</td>
+                                    <td>{{email}}</td>
+                                    <td>{{productsCount}}</td>
+                                    <td>{{formatDate approvedAt}}</td>
+                                    <td class="actions">
+                                        <a href="/sellers/{{_id}}" class="button is-small is-info">
+                                            <span class="icon">
+                                                <i class="fas fa-store"></i>
+                                            </span>
+                                            <span>Voir la boutique</span>
+                                        </a>
+                                        <form action="/sellers/{{_id}}" method="POST" class="is-inline">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="button is-small is-danger">
+                                                <span class="icon">
+                                                    <i class="fas fa-trash"></i>
+                                                </span>
+                                                <span>Supprimer</span>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            {{else}}
+                <p class="has-text-grey">Aucun vendeur approuvé</p>
+            {{/if}}
+        </div>
+    </div>
+</div>

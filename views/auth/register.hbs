@@ -1,0 +1,95 @@
+<div class="auth-page">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-6-tablet is-5-desktop">
+                <div class="box">
+                    <h1 class="title has-text-centered">Inscription</h1>
+                    
+                    {{#if error}}
+                        <div class="notification is-danger">
+                            {{error}}
+                        </div>
+                    {{/if}}
+
+                    <form action="/auth/register" method="POST" class="form">
+                        <div class="field">
+                            <label class="label">Nom complet</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="text" name="name" placeholder="Votre nom" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Email</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="email" name="email" placeholder="exemple@email.com" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Type de compte</label>
+                            <div class="control">
+                                <div class="select is-fullwidth">
+                                    <select name="role" required>
+                                        <option value="client">Client</option>
+                                        <option value="vendeur">Vendeur</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Mot de passe</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="password" name="password" placeholder="Votre mot de passe" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Confirmez le mot de passe</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="password" name="confirmPassword" placeholder="Confirmez votre mot de passe" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="terms" required>
+                                    J'accepte les <a href="/terms">conditions d'utilisation</a>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <button type="submit" class="button is-primary is-fullwidth">
+                                    <span class="icon">
+                                        <i class="fas fa-user-plus"></i>
+                                    </span>
+                                    <span>S'inscrire</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="has-text-centered mt-5">
+                        <p>Déjà inscrit ? <a href="/auth/login">Connectez-vous</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

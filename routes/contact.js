@@ -1,9 +1,11 @@
 const express = require('express');
-const contactController = require('../controllers/contact');
-const { protectRoute } = require('../auth');
-
 const router = express.Router();
 
-router.get('/contact', protectRoute, contactController.contactView);
+router.get('/', (req, res) => {
+    res.render('contact', {
+        title: 'Contact',
+        user: req.user
+    });
+});
 
 module.exports = router;

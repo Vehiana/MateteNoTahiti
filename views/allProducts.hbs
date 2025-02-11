@@ -1,0 +1,12 @@
+<h2>Nos Produits</h2>
+
+{{#each products}}
+  <div class="product">
+      <img src="{{this.photo}}" alt="Image de {{this.name_product}}" width="100">
+      <h3>{{this.name_product}}</h3>
+      <p><strong>Vendeur :</strong> {{this.seller}}</p>
+      <p><strong>Description :</strong> {{this.description}}</p>
+      <p><strong>Prix :</strong> {{this.price}} €</p>
+      <p><strong>Statut :</strong> {{this.status}}</p>
+  </div>
+{{/each}}

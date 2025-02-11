@@ -4,7 +4,7 @@ exports.getHomePage = async (req, res) => {
   try {
     const products = await Product.getProducts();
     
-    // Sélectionner les 6 derniers produits ajoutés
+    // Sélectionner les 5 derniers produits ajoutés
     const latestProducts = products.slice(-5).reverse();
 
     res.render('home', { products: latestProducts });

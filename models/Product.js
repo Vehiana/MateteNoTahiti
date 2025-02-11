@@ -43,7 +43,7 @@ class Product {
       });
     });
   }
-
+  
   static async addProduct(product) {
     return new Promise((resolve, reject) => {
       const db = new PouchDB('datas/productsdb');
@@ -73,7 +73,7 @@ class Product {
           _id: doc._id,
           _rev: doc._rev,
           user_id: product.user_id,
-          photo: product.photo,
+          photo: product.photo || doc.photo,
           description: product.description,
           name_product: product.name_product,
           price: product.price,

@@ -1,0 +1,64 @@
+<div class="auth-page">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-5-tablet is-4-desktop">
+                <div class="box">
+                    <h1 class="title has-text-centered">Connexion</h1>
+                    
+                    {{#if error}}
+                        <div class="notification is-danger">
+                            {{error}}
+                        </div>
+                    {{/if}}
+
+                    <form action="/auth/login" method="POST" class="form">
+                        <div class="field">
+                            <label class="label">Email</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="email" name="email" placeholder="exemple@email.com" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Mot de passe</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="password" name="password" placeholder="Votre mot de passe" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="remember">
+                                    Se souvenir de moi
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <button type="submit" class="button is-primary is-fullwidth">
+                                    <span class="icon">
+                                        <i class="fas fa-sign-in-alt"></i>
+                                    </span>
+                                    <span>Se connecter</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="has-text-centered mt-5">
+                        <p>Pas encore de compte ? <a href="/auth/register">Inscrivez-vous</a></p>
+                        <p class="mt-2"><a href="/auth/forgot-password">Mot de passe oublié ?</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

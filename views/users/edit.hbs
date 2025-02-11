@@ -8,8 +8,22 @@
             <input id="name" type="text" name="name" value="{{ user.name }}">
         </div>
         <div>
+            <label for="profil">Profil</label>
+            <select id="profil">
+                <optgroup>
+                    <option>Client</option>
+                    <option>Vendeur</option>
+                    <option>Admin</option>
+                </optgroup>
+            </select>
+        </div>
+        <div>
             <label for="email">E-mail</label>
             <input id="email" type="email" name="email" value="{{ user.email }}">
+        </div>
+        <div>
+            <label for="password">Mot de passe</label>
+            <input id="password" type="password" name="password" value="{{ user.password }}">
         </div>
         <div>
             <a href="/users"><button type="button">Cancel</button></a>

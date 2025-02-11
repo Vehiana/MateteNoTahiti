@@ -1,19 +1,37 @@
 <div class="container">
     <div class="card">
-        <form method="post" action="/login">
-        <h1>Connexion</h1>
-        <div>
-            <label for="email">E-mail</label>
-            <input id="email" type="email" name="email" required>
-        </div>
-        <div>
-            <label for="password">Mot de passe</label>
-            <input id="password" type="password" name="password" required>
-        </div>
-        <div class="button-group">
-            <button type="reset">Annuler</button>
-            <button type="submit">Valider</button>
-        </div>
+        <form method="post" action="/auth/login">
+            <h1>Connexion</h1>
+            {{#if error}}
+            <div class="error-message">
+                Identifiants incorrects
+            </div>
+            {{/if}}
+            {{#if registered}}
+            <div class="success-message">
+                Inscription réussie ! Vous pouvez maintenant vous connecter.
+            </div>
+            {{/if}}
+            {{#if loggedout}}
+            <div class="success-message">
+                Vous avez été déconnecté avec succès.
+            </div>
+            {{/if}}
+            <div>
+                <label for="email">E-mail</label>
+                <input id="email" type="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Mot de passe</label>
+                <input id="password" type="password" name="password" required>
+            </div>
+            <div class="button-group">
+                <button type="reset">Annuler</button>
+                <button type="submit">Se connecter</button>
+            </div>
+            <div>
+                <p>Pas encore de compte ? <a href="/auth/register">S'inscrire</a></p>
+            </div>
         </form>
     </div>
 </div>

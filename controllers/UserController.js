@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const User = require('../models/user');
 
 module.exports = {
   index: async (req, res) => {
@@ -59,4 +59,4 @@ module.exports = {
       res.redirect('/users'); // TODO msg
     });
   }
-}
+};

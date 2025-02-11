@@ -1,16 +1,35 @@
 <h2>Create product</h2>
 <div class="container">
     <div class="card">
-        <form method="post" action="/products/create">
+        <form method="post" action="/products/create" enctype="multipart/form-data">
         <div>
-            <label for="name">Name</label>
-            <input id="name" type="text" name="name">
+            <label for="photo">Ajouter image</label>
+            <input id="photo" type="file" name="photo" accept="image/*" required>
         </div>
         <div>
-            <label for="price">Price</label>
-            <input id="price" type="price" name="price">
+            <label for="seller">Vendeur</label>
+            <input id="seller" type="text" name="seller" required>
         </div>
         <div>
+            <label for="name_product">Produit</label>
+            <input id="name_product" type="text" name="name_product">
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <textarea id="description" type="text" name="description"></textarea>
+        </div>
+        <div>
+            <label for="price">Prix</label>
+            <input id="price" type="number" name="price">
+        </div>
+        <div>
+            <label for="status">Active</label>
+            <select name="status">
+                <option value="On">On</option>
+                <option value="Off">Off</option>
+            </select>
+        </div>
+        <div class="button-container">
             <a href="/products"><button type="button">Cancel</button></a>
             <button type="submit">Add</button>
         </div>

@@ -1,0 +1,100 @@
+<div class="dashboard vendeur-dashboard">
+    <h1 class="dashboard-title">{{title}}</h1>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-box"></i>
+            </div>
+            <div class="stat-content">
+                <h3>Mes Produits</h3>
+                <p class="stat-value">{{productsCount}}</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="stat-content">
+                <h3>Ventes</h3>
+                <p class="stat-value">{{salesCount}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-sections">
+        <div class="section">
+            <div class="section-header">
+                <h2>Mes Produits</h2>
+                <a href="/products/create" class="button is-primary">
+                    <span class="icon">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    <span>Ajouter un produit</span>
+                </a>
+            </div>
+
+            <div class="products-grid">
+                {{#each products}}
+                    <div class="product-card">
+                        <div class="product-image">
+                            {{#if image}}
+                                <img src="{{image}}" alt="{{name}}">
+                            {{else}}
+                                <img src="/images/default-product.png" alt="Image par défaut">
+                            {{/if}}
+                        </div>
+                        <div class="product-info">
+                            <h3>{{name}}</h3>
+                            <p class="price">{{price}} XPF</p>
+                            <p class="description">{{description}}</p>
+                        </div>
+                        <div class="product-actions">
+                            <a href="/products/edit/{{_id}}" class="button is-info is-small">
+                                <span class="icon">
+                                    <i class="fas fa-edit"></i>
+                                </span>
+                                <span>Modifier</span>
+                            </a>
+                            <button class="button is-danger is-small" onclick="deleteProduct('{{_id}}')">
+                                <span class="icon">
+                                    <i class="fas fa-trash"></i>
+                                </span>
+                                <span>Supprimer</span>
+                            </button>
+                        </div>
+                    </div>
+                {{else}}
+                    <p class="no-products">Vous n'avez pas encore de produits. Commencez par en ajouter un !</p>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function deleteProduct(productId) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')) {
+        fetch('/products/delete', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id: productId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.reload();
+            } else {
+                alert('Erreur lors de la suppression du produit');
+            }
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+            alert('Erreur lors de la suppression du produit');
+        });
+    }
+}
+</script>

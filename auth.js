@@ -1,5 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+const User = require('./models/user');
 
 module.exports = {
   init: () => {
@@ -20,10 +21,37 @@ module.exports = {
     });
 
   },
-  protectRoute: (req, res, next) =>{
-    if(req.isAuthenticated()) {
+  protectRoute: (req, res, next) => {
+    if (req.isAuthenticated()) {
       return next();
     }
-    res.redirect('/login?next=' + req.url);
+    res.redirect('/auth/login');
+  },
+
+  isAdmin: (req, res, next) => {
+    if (req.isAuthenticated() && req.user.role === User.ROLES.ADMIN) {
+      return next();
+    }
+    res.status(403).render('error', {
+      title: 'Accès refusé',
+      message: 'Cette page est réservée aux administrateurs.'
+    });
+  },
+
+  isVendeur: (req, res, next) => {
+    if (req.isAuthenticated() && req.user.role === User.ROLES.VENDEUR) {
+      return next();
+    }
+    res.status(403).render('error', {
+      title: 'Accès refusé',
+      message: 'Cette page est réservée aux vendeurs.'
+    });
+  },
+
+  isAuthenticated: (req, res, next) => {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    res.redirect('/auth/login');
   }
 };

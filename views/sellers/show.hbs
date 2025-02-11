@@ -1,0 +1,135 @@
+<div class="section seller-shop-page">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li><a href="/sellers">Vendeurs</a></li>
+                <li class="is-active"><a href="#" aria-current="page">{{seller.name}}</a></li>
+            </ul>
+        </nav>
+
+        <div class="seller-profile box">
+            <div class="columns">
+                <div class="column is-8">
+                    <h1 class="title">
+                        <span class="icon-text">
+                            <span class="icon">
+                                <i class="fas fa-store"></i>
+                            </span>
+                            <span>{{seller.name}}</span>
+                        </span>
+                    </h1>
+                    <p class="subtitle">
+                        <span class="icon-text">
+                            <span class="icon">
+                                <i class="fas fa-clock"></i>
+                            </span>
+                            <span>Membre depuis {{formatDate seller.createdAt}}</span>
+                        </span>
+                    </p>
+                    {{#if seller.description}}
+                    <div class="content">
+                        <p>{{seller.description}}</p>
+                    </div>
+                    {{/if}}
+                </div>
+                <div class="column is-4">
+                    <div class="seller-stats box">
+                        <div class="level">
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <p class="heading">Produits</p>
+                                    <p class="title">{{products.length}}</p>
+                                </div>
+                            </div>
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <p class="heading">Ventes</p>
+                                    <p class="title">{{seller.salesCount}}</p>
+                                </div>
+                            </div>
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <p class="heading">Note</p>
+                                    <p class="title">{{seller.rating}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="shop-products">
+            <h2 class="title is-4">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fas fa-box-open"></i>
+                    </span>
+                    <span>Produits du vendeur</span>
+                </span>
+            </h2>
+
+            {{#if products.length}}
+            <div class="products-grid">
+                {{#each products}}
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/images/products/{{this.photo}}" alt="{{this.name_product}}">
+                        {{#if this.isNew}}
+                        <span class="tag is-success is-medium product-tag">
+                            Nouveau
+                        </span>
+                        {{/if}}
+                    </div>
+                    <div class="product-info">
+                        <h3 class="title is-5">{{this.name_product}}</h3>
+                        <p class="description">{{truncate this.description 100}}</p>
+                        <div class="price-tag">
+                            <span class="icon">
+                                <i class="fas fa-tag"></i>
+                            </span>
+                            <span class="price">{{formatPrice this.price}} XPF</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <a href="/product/{{this.id}}" class="button is-primary is-fullwidth">
+                            <span class="icon">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                            <span>Voir le produit</span>
+                        </a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            {{else}}
+            <div class="notification is-warning is-light">
+                <p class="has-text-centered">Ce vendeur n'a pas encore de produits.</p>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+<style>
+.seller-shop-page {
+    padding-top: 2rem;
+}
+
+.seller-profile {
+    margin-bottom: 3rem;
+}
+
+.seller-stats.box {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+}
+
+.level-item .title {
+    color: var(--primary-color);
+}
+
+.breadcrumb {
+    margin-bottom: 2rem;
+}
+</style>

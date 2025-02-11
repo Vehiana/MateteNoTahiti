@@ -1,14 +1,13 @@
-<h2>Products</h2>
-{{#if message}}
-<p>{{ message }}</p>
-{{/if}}
-<a href="/products/create"><button type="submit">Add product</button></a>
+<h2>Gestion des Produits</h2>
+<a href="/products/create"><button type="submit">Ajouter un produit</button></a>
 <table class="table">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Price</th>
+      <th>Produit</th>
+      <th>Description</th>
+      <th>Vendeur</th>
+      <th>Prix</th>
+      <th>Active</th>
       <th></th>
       <th></th>
     </tr>
@@ -16,11 +15,13 @@
   <tbody>
     {{#each products}}
       <tr>
-        <td>{{this.id}}</td>
-        <td>{{this.name}}</td>
-        <td>{{this.price}}</td>
+        <td>{{this.name_product}}</td>
+        <td>{{this.description}}</td>
+        <td>{{this.seller.name}}</td>
+        <td>{{this.price}} XPF</td>
+        <td>{{this.status}}</td>
         <td>
-          <form action="/products/delete" method="POST" onsubmit="return confirm('Delete {{this.name}} ?');">
+          <form action="/products/delete" method="POST" onsubmit="return confirm('Delete {{this.name_product}} ?');">
               <input type="hidden" name="id" value="{{this.id}}"/>
               <button type="submit">Delete</button>
           </form>

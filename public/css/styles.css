@@ -1,0 +1,477 @@
+/* Variables */
+:root {
+    --primary-color: #00d1b2;
+    --secondary-color: #485fc7;
+    --background-color: #f5f5f5;
+    --text-color: #4a4a4a;
+}
+
+/* Layout général */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+}
+
+main {
+    flex: 1;
+    padding: 2rem 1rem;
+}
+
+/* Header et Navigation */
+.navbar {
+    padding: 1rem;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
+}
+
+.navbar-brand .logo img {
+    max-height: 50px;
+}
+
+.user-menu {
+    position: relative;
+}
+
+.user-menu .dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1);
+    padding: 0.5rem 0;
+    z-index: 20;
+}
+
+.user-menu:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+}
+
+.dropdown-item:hover {
+    background-color: #f5f5f5;
+}
+
+.dropdown-item .icon {
+    margin-right: 0.5rem;
+}
+
+/* Dashboard */
+.dashboard {
+    padding: 2rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.stat-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-right: 1rem;
+}
+
+.stat-content h3 {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Grilles */
+.products-grid, .sellers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+/* Cartes */
+.product-card, .seller-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
+    overflow: hidden;
+}
+
+.product-image {
+    position: relative;
+    padding-top: 75%;
+}
+
+.product-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info, .seller-info {
+    padding: 1rem;
+}
+
+.product-actions, .seller-actions {
+    padding: 1rem;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+/* Tables */
+.table-container {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+.table {
+    width: 100%;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Messages */
+.notification {
+    margin-bottom: 1.5rem;
+}
+
+/* Pages d'authentification */
+.auth-page {
+    padding: 3rem 1.5rem;
+    min-height: calc(100vh - 52px - 369px);
+    display: flex;
+    align-items: center;
+}
+
+.auth-page .box {
+    padding: 2rem;
+    margin-bottom: 0;
+}
+
+.auth-page .title {
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.auth-page .field:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
+
+.auth-page .checkbox {
+    margin-top: 0.5rem;
+}
+
+.auth-page .button {
+    margin-top: 1rem;
+}
+
+/* Page de contact */
+.contact-page {
+    padding: 3rem 1.5rem;
+    min-height: calc(100vh - 52px - 369px);
+}
+
+.contact-info {
+    height: 100%;
+}
+
+.contact-details {
+    margin-top: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.contact-item .icon {
+    color: var(--primary-color);
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    width: 2rem;
+}
+
+.contact-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.contact-item p {
+    color: #666;
+    margin: 0;
+}
+
+.social-links {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links .icon {
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.social-links .icon:hover {
+    color: var(--secondary-color);
+}
+
+.contact-form .textarea {
+    min-height: 120px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .products-grid, .sellers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-page {
+        padding: 2rem 1rem;
+    }
+
+    .contact-page {
+        padding: 2rem 1rem;
+    }
+
+    .contact-info {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Formulaires */
+.form-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
+    margin-bottom: 2rem;
+}
+
+.field:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+    background: white;
+    padding: 2rem;
+    margin-top: auto;
+    box-shadow: 0 -2px 3px rgba(10, 10, 10, 0.1);
+}
+
+/* Grilles de produits et vendeurs */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.product-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.product-image {
+    position: relative;
+    padding-top: 75%;
+    overflow: hidden;
+}
+
+.product-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.product-tag {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1;
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.product-info .title {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.product-info .description {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.price-tag {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.price-tag .icon {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.seller-info {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.seller-info .icon {
+    margin-right: 0.5rem;
+}
+
+.product-actions {
+    padding: 1rem 1.5rem;
+    background: #f8f9fa;
+    border-top: 1px solid #eee;
+}
+
+/* Vendeurs */
+.sellers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.seller-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+    overflow: hidden;
+}
+
+.seller-card:hover {
+    transform: translateY(-5px);
+}
+
+.seller-header {
+    padding: 1.5rem;
+    background: var(--primary-color);
+    color: white;
+}
+
+.seller-header .title {
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.seller-stats {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background: #f8f9fa;
+    border-bottom: 1px solid #eee;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.seller-content {
+    padding: 1.5rem;
+}
+
+.seller-content p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.seller-actions {
+    padding: 1rem 1.5rem;
+    background: #f8f9fa;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .products-grid, .sellers-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-card, .seller-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
