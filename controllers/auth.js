@@ -1,10 +1,15 @@
 const passport = require('passport');
 const User = require('../models/user');
+const bcrypt = require('bcryptjs');
+
+// Identifiants admin en dur
+const ADMIN_EMAIL = 'admin@cnam.pf';
+const ADMIN_PASSWORD = 'admin1234';
 
 module.exports = {
   loginView: (req, res) => {
     if (req.isAuthenticated()) {
-      return res.redirect('/dashboard');
+      return res.redirect('/home');
     }
     const registered = req.query.registered === 'true';
     const error = req.query.error === 'true';
@@ -12,20 +17,21 @@ module.exports = {
   },
 
   loginUser: (req, res, next) => {
-    passport.authenticate('local', (err, user, info) => {
-      if (err) {
-        return next(err);
-      }
-      if (!user) {
-        return res.redirect('/auth/login?error=true');
-      }
-      req.logIn(user, (err) => {
+      passport.authenticate('local', (err, user, info) => {
         if (err) {
           return next(err);
         }
-        return res.redirect('/dashboard');
-      });
-    })(req, res, next);
+        if (!user) {
+          return res.redirect('/auth/login?error=true');
+        }
+        req.logIn(user, (err) => {
+          if (err) {
+            return next(err);
+          }
+          return res.redirect('/home');
+        });
+      })(req, res, next);
+    }
   },
 
   logoutUser: (req, res) => {
@@ -34,7 +40,7 @@ module.exports = {
 
   registerView: (req, res) => {
     if (req.isAuthenticated()) {
-      return res.redirect('/dashboard');
+      return res.redirect('/home');
     }
     res.render('register', {
       role_client: true
@@ -50,9 +56,7 @@ module.exports = {
         return res.render('register', {
           error: 'Tous les champs sont obligatoires',
           name,
-          email,
-          role_client: role === 'client',
-          role_vendeur: role === 'vendeur'
+          email
         });
       }
 
@@ -60,64 +64,37 @@ module.exports = {
         return res.render('register', {
           error: 'Les mots de passe ne correspondent pas',
           name,
-          email,
-          role_client: role === 'client',
-          role_vendeur: role === 'vendeur'
+          email
         });
       }
 
-      if (password.length < 8) {
-        return res.render('register', {
-          error: 'Le mot de passe doit contenir au moins 8 caractères',
-          name,
-          email,
-          role_client: role === 'client',
-          role_vendeur: role === 'vendeur'
-        });
-      }
-
-      // Vérifier si l'email existe déjà
-      const existingUser = await User.findByEmail(email);
-
+      // Vérifier si l'utilisateur existe déjà
+      const existingUser = await User.findOne({ email });
       if (existingUser) {
         return res.render('register', {
           error: 'Cet email est déjà utilisé',
           name,
-          role_client: role === 'client',
-          role_vendeur: role === 'vendeur'
-        });
-      }
-
-      // Valider le rôle
-      if (role !== User.ROLES.CLIENT && role !== User.ROLES.VENDEUR) {
-        return res.render('register', {
-          error: 'Type de compte invalide',
-          name,
-          email,
-          role_client: true
+          email
         });
       }
 
       // Créer le nouvel utilisateur
-      const result = await User.addUser({
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const user = new User({
         name,
         email,
-        password,
-        role
+        password: hashedPassword,
+        role: role || 'client'
       });
 
-      console.log('User created:', result);
-
-      // Rediriger vers la page de connexion avec un message de succès
+      await user.save();
       res.redirect('/auth/login?registered=true');
     } catch (error) {
       console.error('Erreur lors de l\'inscription:', error);
       res.render('register', {
         error: 'Une erreur est survenue lors de l\'inscription',
         name: req.body.name,
-        email: req.body.email,
-        role_client: req.body.role === 'client',
-        role_vendeur: req.body.role === 'vendeur'
+        email: req.body.email
       });
     }
   }

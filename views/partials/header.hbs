@@ -64,14 +64,6 @@
                         </a>
 
                         <div class="navbar-dropdown is-right">
-                            <a href="/dashboard" class="navbar-item">
-                                <span class="icon-text">
-                                    <span class="icon">
-                                        <i class="fas fa-tachometer-alt"></i>
-                                    </span>
-                                    <span>Tableau de bord</span>
-                                </span>
-                            </a>
 
                             {{#if (eq user.role "vendeur")}}
                                 <a href="/products/create" class="navbar-item">
@@ -80,14 +72,6 @@
                                             <i class="fas fa-plus"></i>
                                         </span>
                                         <span>Ajouter un produit</span>
-                                    </span>
-                                </a>
-                                <a href="/products/my-products" class="navbar-item">
-                                    <span class="icon-text">
-                                        <span class="icon">
-                                            <i class="fas fa-boxes"></i>
-                                        </span>
-                                        <span>Mes produits</span>
                                     </span>
                                 </a>
                             {{/if}}

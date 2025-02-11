@@ -15,8 +15,8 @@ const logger = require('./config/logger');
 const errorHandler = require('./middleware/errorHandler');
 
 const authRoutes = require('./routes/auth');
-const dashboardRoutes = require('./routes/dashboard');
 const homeRoute = require('./routes/home');
+const productRoute = require('./routes/product');
 const productsRoutes = require('./routes/products');
 const contactRoute = require('./routes/contact');
 const usersRoutes = require('./routes/users');
@@ -88,10 +88,10 @@ app.use((req, res, next) => {
 // Routes
 app.use('/', homeRoute);
 app.use('/auth', authRoutes);
-app.use('/dashboard', dashboardRoutes);
 app.use('/products', productsRoutes);
 app.use('/contact', contactRoute);
 app.use('/users', usersRoutes);
+app.use('/product', productRoute);
 
 // Error handling
 app.use(errorHandler);

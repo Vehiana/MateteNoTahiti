@@ -1,11 +1,77 @@
-<div class="container">
-        <div class="image-container">
-            <img src="/images/products/{{this.photo}}" alt="{{this.name_product}}">
+<div class="product-page">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li><a href="/home">Accueil</a></li>
+                <li class="is-active"><a href="#" aria-current="page">{{this.name_product}}</a></li>
+            </ul>
+        </nav>
+
+        <div class="columns">
+            <!-- Colonne de gauche : Image du produit -->
+            <div class="column is-two-fifths">
+                <div class="product-image-container">
+                    <img src="/images/products/{{this.photo}}" alt="{{this.name_product}}" class="product-image">
+                </div>
+            </div>
+
+            <!-- Colonne de droite : Informations du produit -->
+            <div class="column">
+                <div class="product-info">
+                    <h1 class="title is-2">{{this.name_product}}</h1>
+                    <p class="price">{{this.price}} XPF</p>
+                    
+                    <div class="product-description">
+                        <h3 class="title is-4">Description</h3>
+                        <p>{{this.description}}</p>
+                    </div>
+
+                    <div class="seller-info">
+                        <h3 class="title is-4">Informations sur le vendeur</h3>
+                        <div class="seller-card">
+                            {{#if this.seller.profileImage}}
+                                <img src="{{this.seller.profileImage}}" alt="{{this.seller.name}}" class="seller-image">
+                            {{else}}
+                                <div class="seller-image-placeholder">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            {{/if}}
+                            <div class="seller-details">
+                                <h4 class="title is-5">{{this.seller.name}}</h4>
+                                {{#if this.seller.location}}
+                                    <p><i class="fas fa-map-marker-alt"></i> {{this.seller.location}}</p>
+                                {{/if}}
+                                {{#if this.seller.phone}}
+                                    <p><i class="fas fa-phone"></i> {{this.seller.phone}}</p>
+                                {{/if}}
+                                {{#if this.seller.email}}
+                                    <p><i class="fas fa-envelope"></i> {{this.seller.email}}</p>
+                                {{/if}}
+                                {{#if this.seller.businessHours}}
+                                    <p><i class="fas fa-clock"></i> {{this.seller.businessHours}}</p>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <a href="/home" class="button is-light">
+                            <span class="icon">
+                                <i class="fas fa-arrow-left"></i>
+                            </span>
+                            <span>Retour à l'accueil</span>
+                        </a>
+                        {{#if isAuthenticated}}
+                            <button class="button is-primary">
+                                <span class="icon">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <span>Contacter le vendeur</span>
+                            </button>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="info-container">
-            <h1>{{product.name_product}}</h1>
-        <p><strong>Description :</strong> {{product.description}}</p>
-        <p><strong>Prix :</strong> {{product.price}} XPF</p>
-        <a href="/home"><button>Retour à l'accueil</button></a>
-</div>
+    </div>
 </div>

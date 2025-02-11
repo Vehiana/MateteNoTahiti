@@ -14,7 +14,7 @@ module.exports = {
             return next();
         }
         req.flash('error', 'Accès non autorisé');
-        res.redirect('/dashboard');
+        res.redirect('/home');
     },
 
     isVendeurOrAdmin: (req, res, next) => {
@@ -23,7 +23,7 @@ module.exports = {
             return next();
         }
         req.flash('error', 'Accès non autorisé');
-        res.redirect('/dashboard');
+        res.redirect('/home');
     },
 
     isVendeur: (req, res, next) => {
@@ -31,6 +31,6 @@ module.exports = {
             return next();
         }
         req.flash('error', 'Accès non autorisé');
-        res.redirect('/dashboard');
+        res.redirect('/home');
     }
 };
